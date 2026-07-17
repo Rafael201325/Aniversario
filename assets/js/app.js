@@ -86,7 +86,7 @@ function confirmMission(event) {
   setTimeout(() => {
     stopSoundtrack();
     window.location.href = whatsappUrl;
-  }, 5000);
+  }, 4000);
 }
 
 function fillConfig(){ $("#birthday-name").textContent=config.nome; $("#event-date").textContent=config.data; $("#event-time").textContent=config.horario; $("#event-location").textContent=config.local; $("#event-dress").textContent=config.traje; $("#event-notes").textContent=config.observacoes; $("#maps-btn").href=config.googleMaps; const phone=String(config.telefone||"").replace(/\D/g,""); $("#whatsapp-btn").href=`https://wa.me/${phone}?text=${encodeURIComponent(config.mensagemWhatsApp)}`; }
