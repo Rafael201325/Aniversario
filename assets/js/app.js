@@ -97,4 +97,10 @@ function particles(){ const canvas=$("#particles"),ctx=canvas.getContext("2d"),r
 
 $("#accept-btn").addEventListener("click",()=>{effect("click");vibrate(40);flash();runScanner()}); $("#envelope-btn").addEventListener("click",revealMission,{once:true}); $("#sound-toggle").addEventListener("click",startSoundtrack); $("#whatsapp-btn").addEventListener("click",confirmMission); $("#restart-btn").addEventListener("click",()=>location.reload());
 fillConfig(); updateCountdown(); setInterval(updateCountdown,1000); particles();
-if("serviceWorker" in navigator && location.protocol.startsWith("http")) addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js"));
+// Remove instalações e caches de versões anteriores que funcionavam como PWA.
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations().then(registrations => registrations.forEach(registration => registration.unregister()));
+}
+if ("caches" in window) {
+  caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith("missao-secreta-")).map(key => caches.delete(key))));
+}

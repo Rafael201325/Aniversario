@@ -12,7 +12,7 @@ Para usar uma música própria, coloque o arquivo em `assets/audio/` e informe o
 
 ## Executar localmente
 
-O service worker da PWA exige HTTP. Na pasta do projeto, execute uma das opções:
+Para testar em um servidor HTTP local, execute uma das opções:
 
 ```powershell
 npx serve .
@@ -28,7 +28,7 @@ Abra o endereço exibido no terminal. Para testar no celular, use o endereço de
 
 ## Publicação
 
-Publique a pasta inteira no GitHub Pages, Vercel ou outro servidor estático HTTPS. O HTTPS é necessário para instalação da PWA, compartilhamento e área de transferência em navegadores compatíveis.
+Publique a pasta inteira no GitHub Pages, Vercel ou outro servidor estático HTTPS.
 
 ## Mensagem sugerida
 
@@ -43,6 +43,5 @@ Publique a pasta inteira no GitHub Pages, Vercel ou outro servidor estático HTT
 - `assets/js/`: lógica da experiência
 - `assets/audio/`: trilha opcional
 - `assets/images/`: imagens opcionais
-- `assets/icons/`: ícones da PWA
+- `assets/icons/`: ícone do navegador
 - `assets/fonts/`: fontes locais opcionais
-- `manifest.json` e `service-worker.js`: instalação e funcionamento offline
