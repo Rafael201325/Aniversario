@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050807">
+  <meta name="description" content="Você recebeu uma missão confidencial. Toque para descobrir.">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Missão Confidencial">
+  <meta property="og:description" content="Você recebeu um convite secreto.">
+  <meta property="og:type" content="website">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/icon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Missão Confidencial</title>
+</head>
+<body>
+  <a class="skip-link" href="#experience">Pular para a experiência</a>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="grid" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="hud" aria-label="Controles da missão">
+    <span class="hud-status"><i></i> CANAL SEGURO</span>
+    <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false">▶ ATIVAR TRILHA</button>
+  </header>
+
+  <main class="app" id="experience">
+    <section class="screen active" id="screen-intro" aria-labelledby="intro-title">
+      <div class="classified">NÍVEL DE ACESSO: ULTRASSECRETO</div>
+      <div class="radar" aria-hidden="true"><span></span><b></b></div>
+      <p class="eyebrow">TRANSMISSÃO SEGURA </p>
+      <h1 id="intro-title">MISSÃO <strong>CONFIDENCIAL</strong></h1>
+      <p class="lead">Você foi escolhido para uma missão extremamente importante.</p>
+      <button class="primary" id="accept-btn" type="button"><span>ACEITAR MISSÃO</span><small>TOQUE PARA AUTENTICAR</small></button>
+    </section>
+
+    <section class="screen" id="screen-scan" aria-labelledby="scan-title" aria-live="polite">
+      <p class="eyebrow">PROTOCOLO BIOMÉTRICO </p>
+      <h2 id="scan-title">Validando agente</h2>
+      <div class="biometric" aria-hidden="true">
+        <div class="face"><i></i><i></i><i></i><i></i><span></span></div>
+        <div class="fingerprint">◎</div>
+        <div class="scanner-line"></div>
+      </div>
+      <div class="terminal" id="scan-status">Lendo credenciais...</div>
+      <div class="progress" role="progressbar" aria-label="Progresso da autenticação" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-bar"></div></div>
+      <strong class="progress-number" id="progress-number">00%</strong>
+    </section>
+
+    <section class="screen" id="screen-envelope" aria-labelledby="envelope-title">
+      <p class="eyebrow">DOCUMENTO LOCALIZADO </p>
+      <h2 id="envelope-title">Entrega confidencial</h2>
+      <button class="envelope" id="envelope-btn" type="button" aria-label="Abrir envelope confidencial">
+        <span class="envelope-back"></span><span class="letter">CONVITE<br><small>CLASSIFICADO</small></span><span class="envelope-front"></span><span class="flap"></span><b>R</b>
+      </button>
+      <p class="tap-hint">TOQUE NO SELO PARA ROMPER O PROTOCOLO</p>
+    </section>
+
+    <section class="screen mission" id="screen-mission" aria-labelledby="mission-title">
+      <div class="stamp">MISSÃO ACEITA</div>
+      <p class="eyebrow">OBJETIVO DA OPERAÇÃO </p>
+      <h2 id="mission-title" class="typewriter">Comparecer ao aniversário de</h2>
+      <h1 class="birthday-name" id="birthday-name">RAFAEL</h1>
+      <div class="details" id="details">
+        <article><span>📅 DATA</span><strong id="event-date"></strong></article>
+        <article><span>🕒 HORÁRIO</span><strong id="event-time"></strong></article>
+        <article><span>📍 LOCAL</span><strong id="event-location"></strong></article>
+        <article><span>👔 TRAJE</span><strong id="event-dress"></strong></article>
+        <article class="wide"><span>🎁 OBSERVAÇÕES</span><strong id="event-notes"></strong></article>
+      </div>
+      <p class="countdown-label">TEMPO RESTANTE PARA A OPERAÇÃO</p>
+      <div class="countdown" id="countdown" aria-live="off">
+        <div><strong id="days">00</strong><span>DIAS</span></div><div><strong id="hours">00</strong><span>HORAS</span></div><div><strong id="minutes">00</strong><span>MIN</span></div><div><strong id="seconds">00</strong><span>SEG</span></div>
+      </div>
+      <div class="actions">
+        <a class="secondary" id="maps-btn" href="#" target="_blank" rel="noopener">📍 ABRIR LOCALIZAÇÃO</a>
+        <a class="primary compact" id="whatsapp-btn" href="#" target="_blank" rel="noopener">✓ CONFIRMAR PRESENÇA</a>
+      </div>
+    </section>
+
+    <section class="screen final pagode-final" id="screen-final" aria-labelledby="final-title">
+      <div class="party-lights" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="pagode-stage" aria-hidden="true">
+        <span class="music-note note-one">♪</span><div class="cavaquinho">🎸</div><div class="pandeiro">🪘</div><span class="music-note note-two">♫</span>
+      </div>
+      <p class="eyebrow">PRESENÇA GARANTIDA</p>
+      <h1 id="final-title"><strong>✓ MISSÃO CONFIRMADA!</strong></h1>
+      <p class="pagode-call">AGORA É SÓ CHEGAR NO SWING!</p>
+      <div class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="lead">Seu nome já está na roda.<br><b>Prepare o sorriso, o batuque e a energia boa!</b></p>
+      <p class="final-signoff">Nos vemos na festa! 🥁✨</p>
+      <button class="secondary" id="restart-btn" type="button">REVER O CONVITE</button>
+    </section>
+  </main>
+
+  <div class="flash" id="flash" aria-hidden="true"></div>
+  <div class="celebration" id="celebration" aria-hidden="true"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
