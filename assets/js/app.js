@@ -47,6 +47,19 @@ function startSoundtrack() {
   button.setAttribute("aria-pressed","true"); button.textContent="Ⅱ PAUSAR TRILHA";
 }
 
+function stopSoundtrack() {
+  clearInterval(soundtrackTimer);
+  soundtrackTimer = undefined;
+  if (window.missionAudio) {
+    window.missionAudio.pause();
+    window.missionAudio.currentTime = 0;
+  }
+  if (audioContext?.state === "running") audioContext.suspend();
+  const button = $("#sound-toggle");
+  button.setAttribute("aria-pressed", "false");
+  button.textContent = "▶ ATIVAR TRILHA";
+}
+
 function runScanner() {
   showScreen("screen-scan"); const statuses=["Lendo credenciais...","Validando acesso...","Conectando ao servidor...","Autorização encontrada."]; let progress=0;
   const timer=setInterval(()=>{ progress=Math.min(100,progress+Math.floor(Math.random()*6)+3); $("#progress-bar").style.width=`${progress}%`; $(".progress").setAttribute("aria-valuenow",progress); $("#progress-number").textContent=`${String(progress).padStart(2,"0")}%`; $("#scan-status").textContent=statuses[progress<28?0:progress<58?1:progress<90?2:3]; if(progress%16<5) effect("scan"); if(progress===100){clearInterval(timer);setTimeout(()=>{effect("success");flash();showScreen("screen-envelope")},600)}},95);
@@ -70,7 +83,10 @@ function confirmMission(event) {
   showScreen("screen-final");
   document.body.classList.add("party-mode");
   vibrate([60,40,100,40,70]);
-  setTimeout(() => { window.location.href = whatsappUrl; }, 10000);
+  setTimeout(() => {
+    stopSoundtrack();
+    window.location.href = whatsappUrl;
+  }, 10000);
 }
 
 function fillConfig(){ $("#birthday-name").textContent=config.nome; $("#event-date").textContent=config.data; $("#event-time").textContent=config.horario; $("#event-location").textContent=config.local; $("#event-dress").textContent=config.traje; $("#event-notes").textContent=config.observacoes; $("#maps-btn").href=config.googleMaps; const phone=String(config.telefone||"").replace(/\D/g,""); $("#whatsapp-btn").href=`https://wa.me/${phone}?text=${encodeURIComponent(config.mensagemWhatsApp)}`; }
