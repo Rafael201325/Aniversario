@@ -1,47 +1,85 @@
 # Convite Missão Secreta
 
-Convite interativo mobile-first feito somente com HTML, CSS e JavaScript Vanilla.
+Experiência interativa mobile-first para envio de convites personalizados por link, desenvolvida com HTML, CSS e JavaScript Vanilla.
+
+## Destaques
+
+- experiência responsiva para celular;
+- animações e ambientação visual;
+- contagem regressiva;
+- confirmação por WhatsApp;
+- acesso ao local pelo Google Maps;
+- personalização centralizada em um único arquivo;
+- publicação como site estático.
+
+## Tecnologias
+
+- HTML5
+- CSS3
+- JavaScript Vanilla
+- Web APIs
+- GitHub Pages
 
 ## Personalização
 
-Edite apenas o arquivo `config.js`. Nele estão nome, data, horário, local, link do Google Maps, telefone, mensagem do WhatsApp, traje, observações, cor, imagem, logo e música.
+Todas as informações editáveis ficam em `config.js`:
 
-O telefone deve conter código do país + DDD + número, somente dígitos. Exemplo: `5592999999999`.
+```javascript
+window.INVITE_CONFIG = {
+  nome: "Convidado",
+  data: "10 de dezembro de 2026",
+  horario: "19:00",
+  local: "Local do evento",
+  googleMaps: "https://maps.google.com/",
+  telefone: "5592999999999",
+  mensagemWhatsApp: "Confirmo minha presença!"
+};
+```
 
-Para usar uma música própria, coloque o arquivo em `assets/audio/` e informe o caminho em `musica`, por exemplo: `assets/audio/trilha.mp3`. Sem arquivo, o convite usa uma ambientação leve gerada pelo navegador.
+Não publique números de telefone, endereços ou informações pessoais reais em um repositório público.
 
 ## Executar localmente
 
-Para testar em um servidor HTTP local, execute uma das opções:
-
-```powershell
+```bash
 npx serve .
 ```
 
-ou, se tiver Python:
+ou:
 
-```powershell
+```bash
 python -m http.server 8080
 ```
 
-Abra o endereço exibido no terminal. Para testar no celular, use o endereço de rede informado e mantenha os dois dispositivos no mesmo Wi-Fi.
+## Estrutura
+
+```text
+assets/
+├── audio/
+├── css/
+├── fonts/
+├── icons/
+├── images/
+└── js/
+config.js
+index.html
+README.md
+```
 
 ## Publicação
 
-Publique a pasta inteira no GitHub Pages, Vercel ou outro servidor estático HTTPS.
+Por ser um projeto estático, pode ser publicado no GitHub Pages, Vercel, Netlify ou qualquer servidor HTTPS.
 
-## Mensagem sugerida
+## Possibilidades de teste
 
-> 🎁 Você recebeu um convite secreto.
->
-> Toque no link abaixo e descubra... 👀
+- responsividade em diferentes dispositivos;
+- navegação por teclado;
+- acessibilidade;
+- validação dos links externos;
+- comportamento da contagem regressiva;
+- geração da mensagem de confirmação;
+- cenários com configurações ausentes ou inválidas.
 
-## Estrutura
+## Autor
 
-- `config.js`: todos os dados editáveis
-- `assets/css/`: estilos e animações
-- `assets/js/`: lógica da experiência
-- `assets/audio/`: trilha opcional
-- `assets/images/`: imagens opcionais
-- `assets/icons/`: ícone do navegador
-- `assets/fonts/`: fontes locais opcionais
+**Rafael Siqueira**  
+QA Engineer | Test Automation | Front-end Quality
